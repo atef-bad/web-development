@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import './App.css';
-const Login = () => {
+const Login = (prop) => {
 
     const [email, setEmail] = useState('');
     const [password, myPassword] = useState('');
@@ -13,8 +13,8 @@ const Login = () => {
        
         e.preventDefault();
 
-    if(email === 'atefbad91@gmail.com' && password === '123'){
-        alert('welcome');
+    if(email === prop.login.email && password === prop.login.password){
+        alert('welcome '+prop.login.user);
         setLogin({
             ...login,
             email: email,
@@ -26,10 +26,10 @@ const Login = () => {
     else if(email.length === 0 && password.length === 0){
         alert('please enter email and password!');
     }
-    else if(email !== 'atefbad91@gmail.com' && password === '123'){
+    else if(email !== prop.login.email && password === prop.login.password){
         alert('incorrect email')
     }
-    else if(email === 'atefbad91@gmail.com' && password !== '123'){
+    else if(email === prop.login.email && password !== prop.login.password){
         alert('incorrect password');
     }
     else{
@@ -50,7 +50,7 @@ const Login = () => {
                 <input autoFocus value={email} className="inputLogin" onChange={(e)=>{
                     setEmail(e.target.value);
                 }} 
-                type="email" placeholder="E-mali adress" name='email'/>
+                type="email" placeholder="E-mali adress" />
             <br/>
             <br/>
             <label>Password:</label>

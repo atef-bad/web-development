@@ -8,7 +8,10 @@ const NewAccount = () => {
     const [email,setEmail] = useState('');
     const [password,setPassword] = useState('');
     const [pass,setPass ] = useState('');
-
+    const [erreur,setErreur] = useState({
+        message: '',
+        created: false
+    });
     const [login, setLogin] = useState(
         {user:'',
          email:'',
@@ -17,19 +20,27 @@ const NewAccount = () => {
         });
 
     const loginUser = (e) =>{
-
         e.preventDefault();
+        if(user.length !== 0 && email.length !== 0 && pass.length !== 0 && password.length !== 0){
         setLogin({...login,
             user: user,
             email: email,
             password: password,
             pass: pass
         });
-
+        setErreur({
+            ...erreur,
+            message: 'Your Account created with success',
+            created: true
+        })
         setUser('');
         setEmail('');
         setPassword('');
         setPass('');
+        }
+        else{
+            alert('Required filed');
+        }
 
     }
     return(
@@ -40,28 +51,28 @@ const NewAccount = () => {
             <label>
                 User Name: <input value={user} placeholder='full name' onChange={(e)=>{
                     setUser(e.target.value)
-                }}/>
+                }} required/>
             </label>
             <br/>
             <br/>
             <label>E-mail  
                 <input  type="text" placeholder="exemple@gmail.com" value={email} onChange={(e)=>{
                     setEmail(e.target.value)
-                }}/>
+                }} required/>
             </label>
             <br/>
             <br/>
             <label>
                 Password: <input  type="password" placeholder="your Password" value={password} onChange={(e)=>{
                     setPassword(e.target.value)
-                }}/>
+                }} required/>
             </label>
             <br/>
             <br/>
             <label>
                 confirmer Password: <input type="password" placeholder="Confirmer Password" value={pass} onChange={(e)=>{
                     setPass(e.target.value)
-                }}/>
+                }} required/>
             </label>
             <br/>
             <br/>
@@ -70,6 +81,7 @@ const NewAccount = () => {
             <Link to="/" > Back Home</Link>
             </fieldset>
         </form>
+        <h2>{erreur.message}</h2>
         <div className='login' style={{}}><Login login={login} /></div>
     </div>
     )

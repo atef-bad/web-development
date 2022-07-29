@@ -5,7 +5,6 @@ const Login = () => {
 
     const [email, setEmail] = useState('');
     const [password, myPassword] = useState('');
-    const [message, setMessage ] = useState('');
     const [login,setLogin] = useState({
         email:'',
         password:''
@@ -21,7 +20,6 @@ const Login = () => {
             email: email,
             password: password
            });
-           setMessage('login complited');
         setEmail('');
         myPassword('');
     }
@@ -41,7 +39,6 @@ const Login = () => {
     
     return(
     <div id='LoginForm'>
-        <h2>{message}</h2>
         <div id="containerForm">
             <form >
                 <h1>Login:</h1>

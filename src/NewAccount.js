@@ -81,7 +81,7 @@ const NewAccount = () => {
             <Link to="/" > Back Home</Link>
             </fieldset>
         </form>
-        <h2>{erreur.message}</h2>
+        {erreur.created ? <h2>{erreur.message}</h2> : null}
         <div className='login' style={{}}><Login login={login} /></div>
     </div>
     )

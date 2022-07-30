@@ -24,7 +24,7 @@ const Login = (prop) => {
         myPassword('');
     }
     else if(email.length === 0 && password.length === 0){
-        alert('please enter email and password!');
+        alert('please enter your email and password!');
     }
     else if(email !== prop.login.email && password === prop.login.password){
         alert('incorrect email')
@@ -50,7 +50,7 @@ const Login = (prop) => {
                 <input autoFocus value={email} className="inputLogin" onChange={(e)=>{
                     setEmail(e.target.value);
                 }} 
-                type="email" placeholder="E-mali adress" />
+                type="email" placeholder="E-mali adress" required/>
             <br/>
             <br/>
             <label>Password:</label>
@@ -59,7 +59,7 @@ const Login = (prop) => {
                 <input value={password} className="inputLogin" onChange={(e)=>{
                     myPassword(e.target.value);
                 }} 
-                type="password" placeholder="Password" />
+                type="password" placeholder="Password" required/>
            <br/>
            <br/>
            <br/>

@@ -1,17 +1,14 @@
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import React, {useState} from "react";
 import Login from "./Login";
 //import axios from "axios";
 const NewAccount = () => {
-
+    const navigate = useNavigate();
     const [user,setUser] = useState('');
     const [email,setEmail] = useState('');
     const [password,setPassword] = useState('');
     const [pass,setPass ] = useState('');
-    const [erreur,setErreur] = useState({
-        message: '',
-        created: false
-    });
+    
     const [login, setLogin] = useState(
         {user:'',
          email:'',
@@ -21,22 +18,28 @@ const NewAccount = () => {
 
     const loginUser = (e) =>{
         e.preventDefault();
-        if(user.length !== 0 && email.length !== 0 && pass.length !== 0 && password.length !== 0){
+        if(
+            user.length !== 0 && 
+            email.length !== 0 && 
+            pass.length !== 0 && 
+            password.length !== 0
+            )
+        {
         setLogin({...login,
             user: user,
             email: email,
             password: password,
             pass: pass
         });
-        setErreur({
-            ...erreur,
-            message: 'Your Account created with success',
-            created: true
-        })
+       
         setUser('');
         setEmail('');
         setPassword('');
         setPass('');
+        alert('Please white....');
+        setTimeout(()=>{
+            navigate("/AccountCreated");
+        }, 1000);
         }
         else{
             alert('Required filed');
@@ -81,8 +84,7 @@ const NewAccount = () => {
             <Link to="/" > Back Home</Link>
             </fieldset>
         </form>
-        {erreur.created ? <h2>{erreur.message}</h2> : null}
-        <div className='login' style={{}}><Login login={login} /></div>
+        <div className='login' style={{display: 'none'}} ><Login login={login} /></div>
     </div>
     )
 }

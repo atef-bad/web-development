@@ -13,7 +13,10 @@ const Login = (prop) => {
        
         e.preventDefault();
 
-    if(email === prop.login.email && password === prop.login.password){
+    if(
+        email === prop.login.email &&
+         password === prop.login.password)
+    {
         alert('welcome '+prop.login.user);
         setLogin({
             ...login,
@@ -23,13 +26,20 @@ const Login = (prop) => {
         setEmail('');
         myPassword('');
     }
-    else if(email.length === 0 && password.length === 0){
+    else if(email.length === 0 &&
+         password.length === 0)
+    {
         alert('please enter your email and password!');
     }
-    else if(email !== prop.login.email && password === prop.login.password){
+    else if(
+        email !== prop.login.email &&
+         password === prop.login.password)
+    {
         alert('incorrect email')
     }
-    else if(email === prop.login.email && password !== prop.login.password){
+    else if(email === prop.login.email
+         && password !== prop.login.password)
+    {
         alert('incorrect password');
     }
     else{
